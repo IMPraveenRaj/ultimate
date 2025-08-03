@@ -4,14 +4,12 @@
 //what will the return of investment for 1 year 5 years and 10 years expected return
 //duration
 
-type Investmentdeata =
-  | {
-      initialAmout: number;
-      annualContribution: number;
-      expectedReturn: number;
-      duration: number;
-    }
-  | any;
+type Investmentdata = {
+  initialAmout: number;
+  annualContribution: number;
+  expectedReturn: number;
+  duration: number;
+};
 
 type InvestmentResult = {
   year: string;
@@ -22,7 +20,7 @@ type InvestmentResult = {
 
 type CalcuationResult = InvestmentResult[] | string;
 
-function calcualteInvestment(data: Investmentdeata): CalcuationResult {
+function calcualteInvestment(data: Investmentdata): CalcuationResult {
   console.log("return of investment in processsig");
 
   //lets build a logic by destructuring the investment data objects and get all the value from that
@@ -46,7 +44,7 @@ function calcualteInvestment(data: Investmentdeata): CalcuationResult {
   let totalInterestEarned = 0;
   const annualResults: InvestmentResult[] = [];
 
-  for (let i = o; i < duration; i++) {
+  for (let i = 0; i < duration; i++) {
     total = total * (1 + expectedReturn);
     totalInterestEarned = total - totalContributions - initialAmout;
     totalContributions = totalContributions + annualContribution;
@@ -83,6 +81,13 @@ function printInvestmentResults(results: CalcuationResult) {
   }
 }
 
-const results = calcualteInvestment(null);
+const investmentData: Investmentdata = {
+  initialAmout: 5000,
+  annualContribution: 500,
+  expectedReturn: 0.08,
+  duration: 10,
+};
+
+const results = calcualteInvestment(investmentData);
 
 printInvestmentResults(results);

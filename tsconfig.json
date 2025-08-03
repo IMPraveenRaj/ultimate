@@ -2,18 +2,14 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-    // "rootDir": "./src",
+    "rootDir": "./src",
     "outDir": "./dist",
-    "noUnusedLocals": true, //to avoid ununsed variables
-    "lib": ["ES2022", "DOM", "DOM.Iterable"], //o or without "dom" libs when building for node
-    "skipDefaultLibCheck": true, //Ensures .d.ts files from 3rd libraries are not type-checked
+
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
-    "target": "es2022",
+    "target": "esnext",
     "types": [],
-    "esModuleInterop": true, //Ensure ESM And CJS Import work
-    "allowJs": true, //Allows importing.js files into .ts (helpful when migrating projects
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],

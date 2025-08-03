@@ -1,0 +1,88 @@
+//data
+//initial amount
+//annual contribution
+//what will the return of investment for 1 year 5 years and 10 years expected return
+//duration
+
+type Investmentdeata =
+  | {
+      initialAmout: number;
+      annualContribution: number;
+      expectedReturn: number;
+      duration: number;
+    }
+  | any;
+
+type InvestmentResult = {
+  year: string;
+  totalAmount: number;
+  totalContributions: number;
+  totalInterestEarned: number;
+};
+
+type CalcuationResult = InvestmentResult[] | string;
+
+function calcualteInvestment(data: Investmentdeata): CalcuationResult {
+  console.log("return of investment in processsig");
+
+  //lets build a logic by destructuring the investment data objects and get all the value from that
+
+  const { initialAmout, annualContribution, expectedReturn, duration } = data;
+
+  if (initialAmout < 0) {
+    return "Initial amount must be at least zero";
+  }
+
+  if (duration < 0) {
+    return "No valid amount of years provided";
+  }
+
+  if (expectedReturn < 0) {
+    return "Expected return must be alteast zero";
+  }
+
+  let total = initialAmout;
+  let totalContributions = 0;
+  let totalInterestEarned = 0;
+  const annualResults: InvestmentResult[] = [];
+
+  for (let i = o; i < duration; i++) {
+    total = total * (1 + expectedReturn);
+    totalInterestEarned = total - totalContributions - initialAmout;
+    totalContributions = totalContributions + annualContribution;
+    total = total + totalContributions;
+
+    annualResults.push({
+      year: `Year ${i + 1}`,
+      totalAmount: total,
+      totalInterestEarned,
+      totalContributions,
+    });
+  }
+
+  return annualResults;
+}
+
+//lets print the investment resuluts
+function printInvestmentResults(results: CalcuationResult) {
+  if (typeof results === "string") {
+    console.log(results);
+    return;
+  }
+
+  for (const yearEndResults of results) {
+    console.log(yearEndResults.year);
+    console.log(`Total: ${yearEndResults.totalAmount.toFixed(0)}`);
+    console.log(
+      `Total Contributions: ${yearEndResults.totalAmount.toFixed(0)}`
+    );
+    console.log(
+      `Total Interest Earned: ${yearEndResults.totalInterestEarned.toFixed(0)}`
+    );
+    console.log("-------------------------------------------------");
+  }
+}
+
+const results = calcualteInvestment(null);
+
+printInvestmentResults(results);

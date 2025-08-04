@@ -68,6 +68,7 @@ function printInvestmentResults(results: CalcuationResult) {
     return;
   }
 
+  console.log("calculating the investments ");
   for (const yearEndResults of results) {
     console.log(yearEndResults.year);
     console.log(`Total: ${yearEndResults.totalAmount.toFixed(0)}`);
